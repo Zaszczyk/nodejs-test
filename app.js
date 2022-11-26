@@ -1,14 +1,28 @@
 var express = require('express');
 var app = express();
-var server = require('http').createServer(app);
+var server = require('https').createServer(app);
 // var io = require('../..')(server);
 // New:
 var io = require('socket.io')(server);
-var port = 80;
+var port = 443;
 
 io = require('socket.io')(server, {
     path: '/socket.io'
 });
+
+
+io.on('connection', function (socket) {
+    console.log('a user connected');
+
+    socket.on('action', function (package) {
+        console.log('action');
+    });
+
+    socket.on('disconnect', function () {
+        console.log('SocketIO > Disconnected socket ' + socket.id);
+    });
+});
+
 
 server.listen(port);
 
