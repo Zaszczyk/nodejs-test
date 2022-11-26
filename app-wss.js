@@ -1,6 +1,6 @@
 var express = require('express');
-var app = express();
-var server = require('https').createServer(app);
+var appWss = express();
+var server = require('https').createServer(appWss);
 // var io = require('../..')(server);
 // New:
 var io = require('socket.io')(server);
