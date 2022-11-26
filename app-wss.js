@@ -10,7 +10,7 @@ io = require('socket.io')(server, {
     path: '/socket.io'
 });
 
-
+io.set('transports', ['websocket']);
 io.on('connection', function (socket) {
     console.log('a user connected');
 
